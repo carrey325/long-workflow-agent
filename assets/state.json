@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "revision": 0,
+  "cycle_id": null,
+  "current_stage": null,
+  "status": "NEEDS_INPUT",
+  "plan_version": null,
+  "base_commit": null,
+  "router": {
+    "task_id": null,
+    "host_id": null,
+    "last_check_at": null,
+    "ownership": "LAUNCHER"
+  },
+  "heartbeat": {
+    "automation_id": null,
+    "target_task_id": null,
+    "actual_interval_minutes": null,
+    "status": "NOT_CREATED"
+  },
+  "worker": {
+    "attempt_id": null,
+    "task_id": null,
+    "client_task_id": null,
+    "host_id": null,
+    "tier": "NORMAL",
+    "model": null,
+    "reasoning_effort": null,
+    "base_commit": null,
+    "last_activity_at": null,
+    "execution_status": "NOT_STARTED"
+  },
+  "candidate": {
+    "commit_sha": null,
+    "remote_verified": false,
+    "artifact_status": "UNVERIFIED",
+    "manifest_path": null,
+    "validation_evidence": null
+  },
+  "review": {
+    "request_id": null,
+    "kind": null,
+    "status": "NOT_REQUESTED",
+    "commit_sha": null,
+    "plan_version": null,
+    "request_path": null,
+    "response_path": null,
+    "submitted_message_reference": null,
+    "response_reference": null,
+    "decision": null,
+    "evidence_status": null,
+    "worker_instruction": null
+  },
+  "stages": {},
+  "pending_action": null,
+  "operational_problem": {"key": null, "known_failures": 0},
+  "blocker": null,
+  "next_action": "COLLECT_REQUIRED_INPUTS"
+}

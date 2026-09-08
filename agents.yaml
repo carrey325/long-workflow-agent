@@ -1,0 +1,28 @@
+# Portable role definitions. Copy to workflow/agents.yaml and fill from the user.
+# This is read by the skill; it is not a platform-specific registration file.
+schema_version: 1
+roles:
+  router:
+    model: null
+    reasoning_effort: null
+    task_kind: persistent_visible_conversation
+    prompt: references/router_prompt.md
+    responsibilities: [coordinate, reconcile_state, handoff, review, schedule]
+    writes_project_code: false
+  worker:
+    normal:
+      model: null
+      reasoning_effort: null
+    escalated:
+      model: null
+      reasoning_effort: null
+    task_kind: fresh_visible_conversation_per_attempt
+    prompt: references/stage_worker_prompt.md
+    responsibilities: [implement_current_stage, validate, commit, push, handoff]
+  reviewer:
+    model: null
+    reasoning_effort: null
+    task_kind: existing_browser_conversation
+    prompt: references/review_protocol.md
+    responsibilities: [inspect_evidence, assess_current_stage, issue_decision]
+    writes_project_code: false
