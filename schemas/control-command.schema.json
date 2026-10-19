@@ -1,0 +1,26 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "const": "RECHECK_AND_RESUME",
+      "title": "Action",
+      "type": "string"
+    },
+    "blocker_id": {
+      "title": "Blocker Id",
+      "type": "string"
+    },
+    "user_message": {
+      "minLength": 1,
+      "title": "User Message",
+      "type": "string"
+    }
+  },
+  "required": [
+    "action",
+    "blocker_id",
+    "user_message"
+  ],
+  "title": "ControlCommand",
+  "type": "object"
+}

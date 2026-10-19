@@ -1,0 +1,182 @@
+{
+  "$defs": {
+    "ModelRole": {
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        },
+        "effort": {
+          "minLength": 1,
+          "title": "Effort",
+          "type": "string"
+        }
+      },
+      "required": [
+        "model",
+        "effort"
+      ],
+      "title": "ModelRole",
+      "type": "object"
+    },
+    "Reviewer": {
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "pattern": "^https://chatgpt\\.com/(?:g/[^ ]+/)?c/[^ /]+$",
+          "title": "Url",
+          "type": "string"
+        },
+        "browser": {
+          "minLength": 1,
+          "title": "Browser",
+          "type": "string"
+        },
+        "model": {
+          "minLength": 1,
+          "title": "Model",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url",
+        "browser",
+        "model"
+      ],
+      "title": "Reviewer",
+      "type": "object"
+    },
+    "Stage": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "outputs": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Outputs",
+          "type": "array"
+        },
+        "checks": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Checks",
+          "type": "array"
+        },
+        "depends_on": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "path",
+        "outputs",
+        "checks"
+      ],
+      "title": "Stage",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "repo_path": {
+      "format": "path",
+      "title": "Repo Path",
+      "type": "string"
+    },
+    "branch": {
+      "minLength": 1,
+      "pattern": "^[^-\\s][^\\s]*$",
+      "title": "Branch",
+      "type": "string"
+    },
+    "remote": {
+      "default": "origin",
+      "pattern": "^[A-Za-z0-9_.-]+$",
+      "title": "Remote",
+      "type": "string"
+    },
+    "proposal": {
+      "title": "Proposal",
+      "type": "string"
+    },
+    "stages": {
+      "items": {
+        "$ref": "#/$defs/Stage"
+      },
+      "minItems": 1,
+      "title": "Stages",
+      "type": "array"
+    },
+    "amendments": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Amendments",
+      "type": "array"
+    },
+    "worker_normal": {
+      "$ref": "#/$defs/ModelRole"
+    },
+    "worker_escalated": {
+      "$ref": "#/$defs/ModelRole"
+    },
+    "reviewer": {
+      "$ref": "#/$defs/Reviewer"
+    },
+    "authorization": {
+      "minLength": 1,
+      "title": "Authorization",
+      "type": "string"
+    },
+    "heartbeat_minutes": {
+      "exclusiveMinimum": 0,
+      "title": "Heartbeat Minutes",
+      "type": "integer"
+    },
+    "normal_limit": {
+      "default": 3,
+      "maximum": 20,
+      "minimum": 1,
+      "title": "Normal Limit",
+      "type": "integer"
+    },
+    "escalated_limit": {
+      "default": 3,
+      "maximum": 20,
+      "minimum": 1,
+      "title": "Escalated Limit",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "repo_path",
+    "branch",
+    "proposal",
+    "stages",
+    "worker_normal",
+    "worker_escalated",
+    "reviewer",
+    "authorization",
+    "heartbeat_minutes"
+  ],
+  "title": "ProjectConfig",
+  "type": "object"
+}

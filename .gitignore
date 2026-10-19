@@ -1,8 +1,10 @@
-# Runtime records and local credentials are not part of the reusable skill.
-/workflow/
-.env
-.env.*
-*.key
-*.pem
+.venv/
 __pycache__/
 .pytest_cache/
+.ruff_cache/
+*.egg-info/
+.runs/
+.env
+*.sqlite*
+.local/
+runtime-location.txt

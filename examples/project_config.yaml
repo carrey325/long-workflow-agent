@@ -1,0 +1,26 @@
+# Copy outside the runtime repository, then replace every YOUR_* field.
+repo_path: ../YOUR_PROJECT
+branch: codex/long-workflow-YOUR_RUN
+remote: origin
+proposal: proposal.md
+amendments: []
+stages:
+  - id: B1
+    path: batches/B1.md
+    depends_on: []
+    outputs: [results/B1.md]
+    checks: [B1-acceptance]
+worker_normal:
+  model: YOUR_SELECTED_MODEL
+  effort: YOUR_SELECTED_EFFORT
+worker_escalated:
+  model: YOUR_SELECTED_ESCALATED_MODEL
+  effort: YOUR_SELECTED_ESCALATED_EFFORT
+reviewer:
+  url: https://chatgpt.com/c/YOUR_EXISTING_REVIEW_CONVERSATION
+  browser: chrome
+  model: YOUR_SELECTED_REVIEW_MODEL
+authorization: YOUR_ACTUAL_EXECUTION_INSTRUCTION_REFERENCE
+heartbeat_minutes: 10
+normal_limit: 3
+escalated_limit: 3

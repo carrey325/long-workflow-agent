@@ -1,0 +1,94 @@
+{
+  "$defs": {
+    "CheckResult": {
+      "additionalProperties": false,
+      "properties": {
+        "exit_code": {
+          "title": "Exit Code",
+          "type": "integer"
+        },
+        "log": {
+          "title": "Log",
+          "type": "string"
+        }
+      },
+      "required": [
+        "exit_code",
+        "log"
+      ],
+      "title": "CheckResult",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "const": "DONE",
+      "title": "Status",
+      "type": "string"
+    },
+    "worker_id": {
+      "minLength": 1,
+      "title": "Worker Id",
+      "type": "string"
+    },
+    "attempt_id": {
+      "title": "Attempt Id",
+      "type": "string"
+    },
+    "plan_version": {
+      "title": "Plan Version",
+      "type": "string"
+    },
+    "base_commit": {
+      "pattern": "^[0-9a-f]{40,64}$",
+      "title": "Base Commit",
+      "type": "string"
+    },
+    "commit_sha": {
+      "pattern": "^[0-9a-f]{40,64}$",
+      "title": "Commit Sha",
+      "type": "string"
+    },
+    "manifest": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Manifest",
+      "type": "object"
+    },
+    "checks": {
+      "additionalProperties": {
+        "$ref": "#/$defs/CheckResult"
+      },
+      "title": "Checks",
+      "type": "object"
+    },
+    "summary": {
+      "minLength": 1,
+      "title": "Summary",
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "status",
+    "worker_id",
+    "attempt_id",
+    "plan_version",
+    "base_commit",
+    "commit_sha",
+    "manifest",
+    "checks",
+    "summary",
+    "limitations"
+  ],
+  "title": "WorkerResult",
+  "type": "object"
+}

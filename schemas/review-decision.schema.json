@@ -1,0 +1,127 @@
+{
+  "$defs": {
+    "Finding": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "implementation",
+            "architecture",
+            "reasoning",
+            "scope",
+            "data"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "blocking",
+            "minor"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "problem": {
+          "minLength": 1,
+          "title": "Problem",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "category",
+        "severity",
+        "problem"
+      ],
+      "title": "Finding",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "stage_id": {
+      "title": "Stage Id",
+      "type": "string"
+    },
+    "request_id": {
+      "title": "Request Id",
+      "type": "string"
+    },
+    "commit_sha": {
+      "title": "Commit Sha",
+      "type": "string"
+    },
+    "plan_version": {
+      "title": "Plan Version",
+      "type": "string"
+    },
+    "decision": {
+      "enum": [
+        "APPROVED",
+        "CHANGES_REQUIRED",
+        "NEEDS_USER_DECISION"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "evidence_status": {
+      "enum": [
+        "SUFFICIENT",
+        "INSUFFICIENT"
+      ],
+      "title": "Evidence Status",
+      "type": "string"
+    },
+    "inspected_evidence": {
+      "description": "Exact repository-relative file paths from candidate.manifest only; one path per item, no explanations, prefixes, or combined filenames.",
+      "items": {
+        "type": "string"
+      },
+      "title": "Inspected Evidence",
+      "type": "array"
+    },
+    "findings": {
+      "items": {
+        "$ref": "#/$defs/Finding"
+      },
+      "title": "Findings",
+      "type": "array"
+    },
+    "worker_instruction": {
+      "title": "Worker Instruction",
+      "type": "string"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "run_id",
+    "stage_id",
+    "request_id",
+    "commit_sha",
+    "plan_version",
+    "decision",
+    "evidence_status",
+    "inspected_evidence",
+    "findings",
+    "worker_instruction",
+    "limitations"
+  ],
+  "title": "ReviewDecision",
+  "type": "object"
+}
